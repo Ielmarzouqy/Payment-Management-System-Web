@@ -1,4 +1,13 @@
+import { useGetAllApartmentsQuery } from "../redux/apartmentApiSlice";
+
 export default function AllAppart(){
+
+  console.log("data")
+
+    const { data } = useGetAllApartmentsQuery();
+
+    console.log(data);
+
     return (
         <>
             <div className="relative w-full overflow-auto">
@@ -26,11 +35,14 @@ export default function AllAppart(){
       </tr>
     </thead>
     <tbody className="[&amp;_tr:last-child]:border-0">
-      <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">Apartment A</td>
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">New York</td>
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">$2000</td>
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">3</td>
+    {data &&
+              data.apartments.map((apartment) => (
+
+      <tr key={apartment.id}  className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">{apartment.name}</td>
+        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{apartment.location}</td>
+        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{apartment.price}</td>
+        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{apartment.room}</td>
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">2</td>
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
           <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 mr-2">
@@ -71,51 +83,8 @@ export default function AllAppart(){
           </button>
         </td>
       </tr>
-      <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">Apartment B</td>
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">Los Angeles</td>
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">$1800</td>
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">2</td>
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">1</td>
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-          <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 mr-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4"
-            >
-              <path d="M4 13.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-5.5"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <path d="M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z"></path>
-            </svg>
-          </button>
-          <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4"
-            >
-              <path d="M20 5H9l-7 7 7 7h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Z"></path>
-              <line x1="18" x2="12" y1="9" y2="15"></line>
-              <line x1="12" x2="18" y1="9" y2="15"></line>
-            </svg>
-          </button>
-        </td>
-      </tr>
+     
+              ))}
     </tbody>
   </table>
 </div>

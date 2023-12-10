@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  pendingOrders: [],
+  allApartments: [],
 };
 
-const orderSlice = createSlice({
-  name: "order",
+const apartmentSlice = createSlice({
+  name: "apartment",
   initialState,
   reducers: {
-    setPendingOrders: (state, action) => {
-      state.pendingOrders = action.payload;
+    setAllApatrments: (state, action) => {
+      state.allApartments = action.payload;
     },
   },
 });
 
-export const { setPendingOrders } = orderSlice.actions;
+export const { setAllApatrments } = apartmentSlice.actions;
 
-export default orderSlice.reducer;
+export default apartmentSlice.reducer;

@@ -1,42 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { apiSlice } from "./api/apiSlice";
-import authReducer from "../features/auth/redux/authSlice";
+// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import apartmentReducer from '../features/appartement/redux/apartmentApiSlice';
+import clientReducer from '../features/client/redux/ClientSlice';
 
-import menuReducer from "../features/menu/redux/menuSlice";
-import { menuApiSlice } from "../features/menu/redux/menuApiSlice";
- import { productsApi } from '../features/products/redux/productsAPI.js'; 
-import  cartReducer  from "../features/products/redux/cartSlice.js";
-import orderReducer from "../features/order/redux/orderSlice.js";
-import {ordersApi} from "../features/order/redux/orderApiSlice";
-
-
+import apartmentApi from '../features/appartement/redux/apartmentApiSlice'; // Change this line
+import clientApi from '../features/client/redux/ClientApiSlice';
 
 const store = configureStore({
   reducer: {
-    [apiSlice.reducerPath]: apiSlice.reducer,
-    auth: authReducer,
-    cart: cartReducer,
-    menu: menuReducer,
-    orders:orderReducer,
-    [menuApiSlice.reducerPath]: menuApiSlice.reducer,
-    [productsApi.reducerPath]: productsApi.reducer,
-    [ordersApi.reducerPath]: ordersApi.reducer,
-
-
+    apartment: apartmentReducer,
+    [apartmentApi.reducerPath]: apartmentApi.reducer,
+    client: clientReducer,
+    [clientApi.reducerPath]: clientApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-      .concat(apiSlice.middleware)
-      .concat(menuApiSlice.middleware)
-      .concat(apiSlice.middleware, productsApi.middleware)
-      .concat(apiSlice.middleware, ordersApi.middleware),
-
+    .concat(apartmentApi.middleware)
+    .concat(clientApi.middleware),
   devTools: true,
 });
 
-
-
-
-
 export default store;
-

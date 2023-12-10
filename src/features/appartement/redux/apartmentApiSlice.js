@@ -1,26 +1,16 @@
+// apartmentApiSlice.js
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const ordersApi = createApi({
-  reducerPath: "ordersApi",
-
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/api/" }),
+export const apartmentApi = createApi({
+  reducerPath: "apartmentApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/" }),
   endpoints: (builder) => ({
-    getAllOrders: builder.query({
-      query: () => `order/orderPending`,
-
-
+    getAllApartments: builder.query({
+      query: () => `apartment/allapartment`,
     }),
-    
-    confirmOrder: builder.mutation({
-
-        query: ({ params: { _id } }) => ({
-
-          url: `order/confirm/${_id}`,
-          method: 'PUT', // or 'PUT' or 'PATCH' based on your API
-        }),
-      }),
   }),
 });
 
+export const { useGetAllApartmentsQuery } = apartmentApi;
 
-export const { useGetAllOrdersQuery, useConfirmOrderMutation } = ordersApi;
+export default apartmentApi; // Add this line

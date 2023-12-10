@@ -1,9 +1,10 @@
-// import AddAppart from "../components/AddAppart";
 import SideBar from "../../admin/components/SideBar";
+// import React from 'react';
 import Header from "../../admin/pages/layout/Header";
 import AllAppart from "../components/AllAppart";
 
  export default function AllApartments(){
+
 
     return (
         <>

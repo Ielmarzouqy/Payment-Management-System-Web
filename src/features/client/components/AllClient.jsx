@@ -1,4 +1,10 @@
+import { useGetAllClientsQuery } from "../redux/ClientApiSlice";
+
 export default function AllClient(){
+console.log("data")
+  const { data } = useGetAllClientsQuery();
+
+    console.log(data);
     return (
         <>
             <div className="w-full p-8">
