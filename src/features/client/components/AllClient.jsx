@@ -16,6 +16,12 @@ console.log("data")
             Client
           </th>
           <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 w-[200px]">
+            email
+          </th>
+          <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 w-[200px]">
+            phone
+          </th>
+          <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 w-[200px]">
             Apartment
           </th>
           <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 w-[200px]">
@@ -27,54 +33,33 @@ console.log("data")
         </tr>
       </thead>
       <tbody className="[&amp;_tr:last-child]:border-0">
-        <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+        
+      {data &&
+                data.result.map((client) => (
+        <tr
+        key={client.id} 
+        className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
           <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">
             <span
               className="relative flex shrink-0 overflow-hidden rounded-full h-10 w-10 mr-4"
               src="/placeholder.svg?height=40&amp;width=40"
             ></span>
-            John Doe
+            {client.fullname}
           </td>
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">Apartment 101</td>
+          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{client.apartment.name}</td>
+          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{client.email}</td>
+          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{client.phone}</td>
+
+
           <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
             <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-green-200 text-green-800">
               Paid
             </div>
           </td>
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 text-right">$1,200.00</td>
+          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 text-right">{client.apartment.price}</td>
         </tr>
-        <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">
-            <span
-              className="relative flex shrink-0 overflow-hidden rounded-full h-10 w-10 mr-4"
-              src="/placeholder.svg?height=40&amp;width=40"
-            ></span>
-            Jane Smith
-          </td>
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">Apartment 102</td>
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-            <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-yellow-200 text-yellow-800">
-              Pending
-            </div>
-          </td>
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 text-right">$1,500.00</td>
-        </tr>
-        <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">
-            <span
-              className="relative flex shrink-0 overflow-hidden rounded-full h-10 w-10 mr-4"
-              src="/placeholder.svg?height=40&amp;width=40"
-            ></span>
-            Robert Johnson
-          </td>
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">Apartment 103</td>
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-            <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-red-200 text-red-800">
-              Unpaid
-            </div>
-          </td>
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 text-right">$1,800.00</td>
-        </tr>
+                ))}
+        
       </tbody>
     </table>
   </div>
