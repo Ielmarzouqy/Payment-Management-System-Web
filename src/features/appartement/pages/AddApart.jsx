@@ -16,7 +16,10 @@ import AddAppart from "../components/AddAppart";
                     <div className="flex items-center gap-4">
                         <h1 className="font-semibold text-lg md:text-xl">Dashboard</h1>
                     </div>
-            <AddAppart/>
+            <AddAppart
+            // newApartment={newApartment}
+            // setNewApartment={setNewApartment}
+            />
             
 
             </main>
