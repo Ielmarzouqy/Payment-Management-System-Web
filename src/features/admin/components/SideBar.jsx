@@ -13,7 +13,7 @@ import { useState } from "react";
     }
     return (
         <>
-        <div className="hidden border-r bg-gray-100/40 lg:block dark:bg-gray-800/40">
+        <div className="hidden border-r bg-blue-100 lg:block dark:bg-gray-800/40">
     <div className="flex h-full max-h-screen flex-col gap-2">
       <div className="flex h-[60px] items-center border-b px-6">
         <a className="flex items-center gap-2 font-semibold" href="#">
@@ -163,6 +163,30 @@ import { useState } from "react";
            className= {`${ currentPage === 'payment' ? 'active' : '' } flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50`}
   
            onClick={() => handlePageChange('payment')}
+            href="/payment/addPayment"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4"
+            >
+              <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+              <line x1="2" x2="22" y1="10" y2="10"></line>
+            </svg>
+             Add Payments
+          </a>
+
+          <a
+           className= {`${ currentPage === 'payment' ? 'active' : '' } flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50`}
+  
+           onClick={() => handlePageChange('payment')}
             href="/payment"
           >
             <svg
@@ -180,7 +204,7 @@ import { useState } from "react";
               <rect width="20" height="14" x="2" y="5" rx="2"></rect>
               <line x1="2" x2="22" y1="10" y2="10"></line>
             </svg>
-            Payments
+             List Payments
           </a>
           <a
            className= {`${ currentPage === 'client' ? 'active' : '' } flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50`}
@@ -237,7 +261,7 @@ import { useState } from "react";
            className="   flex items-center gap-3 rounded-lg px-3 py-2   transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50"
 
         //    onClick={() => handlePageChange('client')}
-            href="/receipt"
+            href="/payment/receipt"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -8,9 +8,14 @@ export const apartmentApi = createApi({
     getAllApartments: builder.query({
       query: () => `apartment/allapartment`,
     }),
+
+    createApartment: builder.mutation({
+      query: () => `apartment/addapartment`,
+    }),
   }),
+  
 });
 
-export const { useGetAllApartmentsQuery } = apartmentApi;
+export const { useGetAllApartmentsQuery , useCreateApartmentMutation} = apartmentApi;
 
 export default apartmentApi; // Add this line

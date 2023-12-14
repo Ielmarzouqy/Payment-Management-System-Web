@@ -1,10 +1,10 @@
 import SideBar from "../../admin/components/SideBar";
-import Header from "../../admin/pages/layout/Header";
+import Header from "../../admin/layout/Header";
 import Receipt from "../component/Receipt";
 
 
 
-export default function ReceiptPage() {
+const ReceiptPage = () => {
   return (
     <>
       <div className="grid h-screen min-h-screen w-full overflow-hidden lg:grid-cols-[280px_1fr]">
@@ -23,3 +23,5 @@ export default function ReceiptPage() {
     </>
   );
 }
+
+export default ReceiptPage

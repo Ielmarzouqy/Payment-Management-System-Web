@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useGetAllClientsQuery } from "../redux/ClientApiSlice";
 
 export default function AllClient(){
@@ -25,7 +26,7 @@ console.log("data")
             Apartment
           </th>
           <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 w-[200px]">
-            Payment Status
+            Payments
           </th>
           <th className="h-12 px-4 align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 text-right w-[200px]">
             Amount
@@ -52,11 +53,14 @@ console.log("data")
 
 
           <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-            <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-green-200 text-green-800">
-              Paid
-            </div>
+            {/* <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-green-200 text-green-800"> */}
+              {client.payments.length}
+            {/* </div> */}
           </td>
-          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 text-right">{client.apartment.price}</td>
+          <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 text-right">
+          <Link to={`/payment/${client._id}`}>Details</Link>
+
+          </td>
         </tr>
                 ))}
         

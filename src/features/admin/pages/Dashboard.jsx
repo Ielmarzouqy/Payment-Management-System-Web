@@ -1,7 +1,8 @@
 import ClientInfo from "../../client/pages/ClientInfo";
 import PayInfo from "../../payment/pages/PayInfo";
 import SideBar from "../components/SideBar";
-import Header from "./layout/Header";
+import Header from "../layout/Header";
+
 
 
 export default function Dashboard() {

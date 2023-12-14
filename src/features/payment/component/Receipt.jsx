@@ -1,4 +1,13 @@
+import { useParams } from "react-router";
+import { useGetPaymentByIdQuery } from "../redux/PaymentApiSlice"
+
 export default function Receipt(){
+
+  const {id} = useParams()
+  const {data} = useGetPaymentByIdQuery(id);
+
+  console.log(data)
+
     return (
         <>
 
@@ -20,19 +29,33 @@ export default function Receipt(){
         alt="User avatar"
       ></span>
       <div>
-        <h3 className="text-lg font-semibold">John Doe</h3>
-        <p className="text-gray-600">johndoe@example.com</p>
+        <h3 className="text-lg font-semibold">
+
+          {data?.result.client.fullname}
+        </h3>
+        <p className="text-gray-600">
+        {data?.result.client.email}
+
+
+        </p>
       </div>
     </div>
     <div className="space-y-2">
       <p className="text-gray-600">Payment Details:</p>
       <div className="flex justify-between">
         <span>Apartment:</span>
-        <span className="font-semibold">1B</span>
+        <span className="font-semibold">
+
+        {data?.result.apartment.name}
+
+        </span>
       </div>
       <div className="flex justify-between">
         <span>Amount:</span>
-        <span className="font-semibold">$1200</span>
+        <span className="font-semibold">
+        {data?.result.amount}
+
+        </span>
       </div>
       <div className="flex justify-between">
         <span>Payment Date:</span>

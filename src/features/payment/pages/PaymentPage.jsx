@@ -1,9 +1,9 @@
 import SideBar from '../../admin/components/SideBar';
-import Header from '../../admin/pages/layout/Header';
+import Header from '../../admin/layout/Header';
 import PayForm from '../component/PayForm';
 
 
-export default function PaymentPage() {
+ const  PaymentPage = () => {
   return (
     <>
       <div className="grid h-screen min-h-screen w-full overflow-hidden lg:grid-cols-[280px_1fr]">
@@ -22,3 +22,5 @@ export default function PaymentPage() {
     </>
   );
 }
+
+export default  PaymentPage

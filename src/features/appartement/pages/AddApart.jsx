@@ -1,5 +1,5 @@
 import SideBar from "../../admin/components/SideBar";
-import Header from "../../admin/pages/layout/Header";
+import Header from "../../admin/layout/Header";
 import AddAppart from "../components/AddAppart";
 
  export default function AddApart(){

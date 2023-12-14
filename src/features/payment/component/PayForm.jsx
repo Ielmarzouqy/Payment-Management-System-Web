@@ -1,97 +1,68 @@
+// import { useGetAllApartmentsQuery } from "../../appartement/redux/apartmentApiSlice"
+// import { useGetAllClientsQuery } from "../../client/redux/ClientApiSlice";
 
 export default function PayForm(){
+
+  // const {data: apartments} = useGetAllApartmentsQuery();
+  // const {data:clients} = useGetAllClientsQuery();
+  // // const { data } = useGetAllClientsQuery();
+
+  // console.log( apartments, clients)
     return (
        <>
-
-    
        <div
-  className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-2xl mx-auto my-12"
-  data-v0-t="card"
->
+        className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-2xl mx-auto my-12"
+        data-v0-t="card"
+        >
   <div className="flex flex-col space-y-1.5 p-6">
     <h3 className="tracking-tight text-lg font-bold">Apartment Payment Form</h3>
     <p className="text-sm text-muted-foreground">Select an apartment, client, and make monthly payments.</p>
   </div>
   <div className="p-6 space-y-6">
-    <div className="space-y-2">
+   
+
+<div className="space-y-2">
       <label
         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        // for="apartment"
       >
-        Apartment
+        Apartment Number
       </label>
-      <button
-        type="button"
-        role="combobox"
-        aria-controls="radix-:r16:"
-        aria-expanded="false"
-        aria-autocomplete="none"
-        dir="ltr"
-        data-state="closed"
-        data-placeholder=""
-        className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-        id="apartment"
-        aria-label="Apartment"
-      >
-        {/* <span style="pointer-events: none;">Select an apartment</span> */}
-        <span >Select an apartment</span>
+     
+      {/* <select
+           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
 
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-4 w-4 opacity-50"
-          aria-hidden="true"
+        aria-hidden="true"
         >
-          <path d="m6 9 6 6 6-6"></path>
-        </svg>
-      </button>
+        <option value="">  Apartment Number</option>
+        {apartments &&
+          apartments.apartments.map((apartment) => (
+            <option key={apartment.id} value={apartment.number}>
+              {apartment.name}
+            </option>
+          ))}
+      </select> */}
     </div>
-    <div className="space-y-2">
+    
+<div className="space-y-2">
       <label
         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        // for="client"
+        // for="apartment-number"
       >
-        Client
-      </label>
-      <button
-        type="button"
-        role="combobox"
-        aria-controls="radix-:r17:"
-        aria-expanded="false"
-        aria-autocomplete="none"
-        dir="ltr"
-        data-state="closed"
-        data-placeholder=""
-        className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-        id="client"
-        aria-label="Client"
-      >
-        {/* <span style="pointer-events: none;">Select a client</span> */}
-        <span >Select a client</span>
+Client      </label>
+     
+      {/* <select
+           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
 
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-4 w-4 opacity-50"
-          aria-hidden="true"
+        aria-hidden="true"
         >
-          <path d="m6 9 6 6 6-6"></path>
-        </svg>
-      </button>
+        <option value="">  Client</option>
+        {clients &&
+          clients.result.map((client) => (
+            <option key={client._id} value={client._id}>
+              {client.fullname}
+            </option>
+          ))}
+      </select> */}
     </div>
     <div className="space-y-2">
       <label

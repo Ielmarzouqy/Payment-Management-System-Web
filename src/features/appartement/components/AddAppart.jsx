@@ -86,9 +86,6 @@ export default function AddAppart(){
   </div>
 </div>
 
-{/* <h1>
-    appart form
-</h1> */}
         </>
     )
 }
