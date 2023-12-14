@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-a.active {
+/* a.active {
     
     color: rgb(39, 38, 38);
     background: rgb(141, 81, 81);
-}
+} */

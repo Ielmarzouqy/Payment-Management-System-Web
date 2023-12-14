@@ -1,12 +1,14 @@
 // import { useGetAllApartmentsQuery } from "../redux/apartmentApiSlice";
 
+import { useGetAllApartmentsQuery } from "../redux/apartmentApiSlice";
+
 export default function AllAppart(){
 
   console.log("data")
 
-    // const { data } = useGetAllApartmentsQuery();
+    const { data } = useGetAllApartmentsQuery();
 
-    // console.log(data);
+    console.log(data);
 
     return (
         <>
@@ -34,7 +36,7 @@ export default function AllAppart(){
         </th>
       </tr>
     </thead>
-    {/* <tbody className="[&amp;_tr:last-child]:border-0">
+    <tbody className="[&amp;_tr:last-child]:border-0">
     {data &&
               data.apartments.map((apartment) => (
 
@@ -85,7 +87,7 @@ export default function AllAppart(){
       </tr>
      
               ))}
-    </tbody> */}
+    </tbody>
   </table>
 </div>
         </>

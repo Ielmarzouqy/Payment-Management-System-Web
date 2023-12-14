@@ -1,4 +1,7 @@
 import { useParams } from "react-router";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 import { useGetPaymentByIdQuery } from "../redux/PaymentApiSlice"
 
 export default function Receipt(){
@@ -8,10 +11,33 @@ export default function Receipt(){
 
   console.log(data)
 
+  const downloadReceipt = () => {
+    const receipt = document.getElementById('receipt-container');
+  
+    html2canvas(receipt).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      // pdf.addImage(imgData, 'PNG', 0, 0, 210, 297); // Adjust width and height as needed
+
+      pdf.setFontSize(14);
+      pdf.setTextColor(0, 0, 0); // Black text color
+  
+      pdf.addImage(imgData, 'PNG', 15, 15, 180, 267); // Adjust position and size
+  
+      // Add additional text or styling as needed
+      pdf.text('Payment Receipt', 15, 10);
+
+      pdf.save('receipt.pdf');
+    });
+  };
+  
+
     return (
         <>
 
-<div className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-xl mx-auto" data-v0-t="card">
+<div
+id="receipt-container"
+ className="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-xl mx-auto" data-v0-t="card">
   <div className="flex flex-col space-y-1.5 p-6">
     <div className="flex items-center justify-between">
       <h3 className="text-2xl font-semibold leading-none tracking-tight">Payment Receipt</h3>
@@ -68,10 +94,10 @@ export default function Receipt(){
     </div>
   </div>
   <div className="flex items-center p-6">
-    <a className="underline text-blue-500" href="#">
-      View Transaction Details
-    </a>
-    <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 ml-auto bg-blue-500 text-white">
+   
+    <button
+    onClick={downloadReceipt}
+    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 ml-auto bg-blue-500 text-white">
       Download Receipt
     </button>
   </div>

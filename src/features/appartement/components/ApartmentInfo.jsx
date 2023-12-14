@@ -1,10 +1,12 @@
 // import { useGetAllApartmentsQuery } from "../redux/apartmentApiSlice"
 
+import { useGetAllApartmentsQuery } from "../redux/apartmentApiSlice"
+
 export default function ApartmentInfo(){
 
-    // const {data:apartment} = useGetAllApartmentsQuery()
+    const {data:apartment} = useGetAllApartmentsQuery()
 
-    // console.log(apartment)
+    console.log(apartment)
     return (
         <>
          <div className="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
