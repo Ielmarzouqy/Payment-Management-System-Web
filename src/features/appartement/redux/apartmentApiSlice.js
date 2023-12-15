@@ -47,12 +47,14 @@ export const apartmentApiSlice = apiSlice.injectEndpoints({
     //   }),
     // }),
 
-    // deleteApartment: builder.mutation({
-    //   query: (apartmentId) => ({
-    //     url: `/apartment/${apartmentId}`,
-    //     method: "DELETE",
-    //   }),
-    // }),
+    deleteApartment: builder.mutation({
+      query: (apartmentId) => ({
+        url: `/apartment/deleteaprt/${apartmentId}`,
+        method: "DELETE",
+      }),
+    }),
+
+    
     getAllApartments: builder.query({
       query: () => "/apartment/allapartment",
     }),
@@ -62,6 +64,7 @@ export const apartmentApiSlice = apiSlice.injectEndpoints({
 export const {
  useCreateApartmentMutation,
  useGetAllApartmentsQuery,
+ useDeleteApartmentMutation,
 } = apartmentApiSlice;
 
 

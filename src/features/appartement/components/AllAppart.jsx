@@ -1,6 +1,8 @@
 // import { useGetAllApartmentsQuery } from "../redux/apartmentApiSlice";
 
-import { useGetAllApartmentsQuery } from "../redux/apartmentApiSlice";
+import { useState } from "react";
+import { useDeleteApartmentMutation, useGetAllApartmentsQuery } from "../redux/apartmentApiSlice";
+import Swal from "sweetalert2";
 
 export default function AllAppart(){
 
@@ -8,7 +10,28 @@ export default function AllAppart(){
 
     const { data } = useGetAllApartmentsQuery();
 
+    const [deleteApartment] = useDeleteApartmentMutation()
     console.log(data);
+    const [deletedApartmentId, setDeletedApartmentId] = useState(null);
+
+
+    const handleDeleteApartment = async (apartmentId) => {
+      try {
+        const response = await deleteApartment(apartmentId).unwrap();
+        console.log("Apartment deleted successfully", response);
+        setDeletedApartmentId(apartmentId); 
+        
+        Swal.fire({
+          title: 'Deleted success!',
+          text: 'The Apartment deleted.',
+          icon: 'success',
+        });
+        
+        // Optional: Update component state if needed
+      } catch (error) {
+        console.error("Failed to delete apartment", error);
+      }
+    };
 
     return (
         <>
@@ -75,7 +98,10 @@ export default function AllAppart(){
               <path d="M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z"></path>
             </svg>
           </button>
-          <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10">
+          <button 
+          onClick={() => handleDeleteApartment(apartment._id)}
+          // onClick={}
+          className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -93,6 +119,7 @@ export default function AllAppart(){
               <line x1="12" x2="18" y1="9" y2="15"></line>
             </svg>
           </button>
+          {/* <Link ref={apartment._id} ></Link> */}
         </td>
       </tr>
      

@@ -1,9 +1,9 @@
-import { useGetAllPaymentsQuery } from '../redux/PaymentApiSlice';
 import { Link } from 'react-router-dom';
+import { useGetAllPaymentsQuery } from '../redux/PaymentApiSlice';
 export default function AllPayments() {
   console.log('data');
-  const { data } = useGetAllPaymentsQuery();
  
+const {data} = useGetAllPaymentsQuery()
 
   console.log(data);
   return (
@@ -35,9 +35,9 @@ export default function AllPayments() {
             </thead>
             <tbody className="[&amp;_tr:last-child]:border-0">
               {data &&
-                data.result.map((payment) => (
+                data?.result.map((payment) => (
                   <tr
-                    key={payment.id}
+                    key={payment?.id}
                     className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
                   >
                     <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">
@@ -45,16 +45,17 @@ export default function AllPayments() {
                         className="relative flex shrink-0 overflow-hidden rounded-full h-10 w-10 mr-4"
                         src="/placeholder.svg?height=40&amp;width=40"
                       ></span>
-                      {payment.client.fullname}
+                      {payment?.client.fullname}
                     </td>
                     <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-                      {payment.apartment.name}
+                      {payment?.apartment?.name}
+
                     </td>
                     <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-                      {payment.client.email}
+                      {payment?.client.email}
                     </td>
                     <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-                      {payment.client.phone}
+                      {payment?.client.phone}
                     </td>
 
                     <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
@@ -63,7 +64,7 @@ export default function AllPayments() {
                       </div>
                     </td>
                     <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 text-right">
-                      {payment.amount}
+                      {payment?.amount}
                     </td>
 
                     <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 text-right">
@@ -71,7 +72,7 @@ export default function AllPayments() {
               <input type=""  >{payment._id}</input >
               </a> */}
 
-                      <Link to={`/payment/${payment._id}`}>Details</Link>
+                      {/* <Link to={`/payment/${payment._id}`}>Details</Link> */}
                     </td>
                   </tr>
                 ))}

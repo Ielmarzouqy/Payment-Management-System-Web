@@ -11,59 +11,45 @@ export default function PayForm(){
 
   const {data: apartments} = useGetAllApartmentsQuery();
   const {data:clients} = useGetAllClientsQuery();
-  // // const { data } = useGetAllClientsQuery();
-
   const [creatPayment] = useCreatePaymentMutation()
  
-const [paymentData, setPaymentData] = useState({
-  client: '',
-  apartment: '',
-  amount: '',
-  month: '',
+  const [paymentData, setPaymentData] = useState({
+    client: '',
+    apartment: '',
+    amount: '',
+    month: '',
  
-});
+  });
 
-// const handleInputChange = (e) => {
-//   const {value} = e.target;
-//   setClientData((prevData) => ({
-//     ...prevData,
-//     apartment: {
-//       ...prevData.apartment,
-//       value: value,
-//     }
-   
-//   }));
-// };
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
 
-const handleInputChange = (e) => {
-  const { id, value } = e.target;
+    setPaymentData((prevData) => ({
+      ...prevData,
+      [id]:value
+    }));
+  };
 
-  setPaymentData((prevData) => ({
-    ...prevData,
-    [id]:value
-  }));
-};
+    const handleAddClient = async () => {
+      try {
+        await creatPayment(paymentData);
 
-const handleAddClient = async () => {
-  try {
-    await creatPayment(paymentData);
+        console.log(paymentData);
+        Swal.fire({
+          title: 'create client sucess!',
+          text: 'The client created.',
+          icon: 'success',
+        });
+      } catch (error) {
+        console.error('Failed to create client', error);
 
-    console.log(paymentData);
-    Swal.fire({
-      title: 'create client sucess!',
-      text: 'The client created.',
-      icon: 'success',
-    });
-  } catch (error) {
-    console.error('Failed to create client', error);
-
-    Swal.fire({
-      title: 'Error',
-      text: 'Failed to create clint.',
-      icon: 'error',
-    });
-  }
-};
+        Swal.fire({
+          title: 'Error',
+          text: 'Failed to create clint.',
+          icon: 'error',
+        });
+      }
+    };
     return (
        <>
        <div
@@ -111,9 +97,9 @@ const handleAddClient = async () => {
      
       <select
            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-onChange={handleInputChange}
-id="client"
-value={paymentData.client}
+            onChange={handleInputChange}
+            id="client"
+            value={paymentData.client}
         aria-hidden="true"
         >
         <option value="">  Client</option>
@@ -151,9 +137,9 @@ value={paymentData.client}
      
       <select
            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-onChange={handleInputChange}
-value={paymentData.month}
-id="month"
+            onChange={handleInputChange}
+            value={paymentData.month}
+            id="month"
         aria-hidden="true"
         >
         <option value=""> Payment Month</option>
@@ -177,8 +163,8 @@ id="month"
   </div>
   <div className="flex items-center p-6">
     <button
-    onClick={handleAddClient}
-    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 ml-auto">
+      onClick={handleAddClient}
+      className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 ml-auto">
       Make Payment
     </button>
   </div>
