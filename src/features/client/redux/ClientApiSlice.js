@@ -22,13 +22,13 @@ import { apiSlice } from "../../../app/api/apiSlice";
 export const clientApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     
-    // createPayment: builder.mutation({
-    //   query: (paymentData) => ({
-    //     url: "/payment/",
-    //     method: "POST",
-    //     body: paymentData,
-    //   }),
-    // }),
+    createClient: builder.mutation({
+      query: (clientData) => ({
+        url: "/client/addclient",
+        method: "POST",
+        body: clientData,
+      }),
+    }),
 
     getClientById: builder.query({
       query: (clientId) => `/client/client/${clientId}`,
@@ -61,7 +61,7 @@ export const clientApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  // useCreatePaymentMutation,
+  useCreateClientMutation,
   useGetClientByIdQuery,
   useGetClientReceiptQuery,
   // useDeletePaymentMutation,

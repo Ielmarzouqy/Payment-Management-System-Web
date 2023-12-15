@@ -1,15 +1,71 @@
 // import { useGetAllApartmentsQuery } from "../../appartement/redux/apartmentApiSlice"
 
+import Swal from "sweetalert2";
 import { useGetAllApartmentsQuery } from "../../appartement/redux/apartmentApiSlice"
+import { useCreateClientMutation } from "../redux/ClientApiSlice";
+import { useState } from "react";
 
 export default function AddClient(){
   const {data} = useGetAllApartmentsQuery()
+
+  const [createClient] = useCreateClientMutation()
+
+const [clientData, setClientData] = useState({
+  fullname: '',
+  email: '',
+  phone: '',
+  apartment: '',
+  startDate:'',
+  endDate:''
+});
+
+// const handleInputChange = (e) => {
+//   const {value} = e.target;
+//   setClientData((prevData) => ({
+//     ...prevData,
+//     apartment: {
+//       ...prevData.apartment,
+//       value: value,
+//     }
+   
+//   }));
+// };
+
+const handleInputChange = (e) => {
+  const { id, value } = e.target;
+
+  setClientData((prevData) => ({
+    ...prevData,
+    [id]:value
+  }));
+};
+
+const handleAddClient = async () => {
+  try {
+    await createClient(clientData);
+
+    console.log(clientData);
+    Swal.fire({
+      title: 'create client sucess!',
+      text: 'The client created.',
+      icon: 'success',
+    });
+  } catch (error) {
+    console.error('Failed to create client', error);
+
+    Swal.fire({
+      title: 'Error',
+      text: 'Failed to create clint.',
+      icon: 'error',
+    });
+  }
+};
 console.log(data)
     return (
         <>
 
 <div
-  className="border text-card-foreground max-w-lg mx-auto mt-10 p-6 bg-white rounded-xl shadow-md space-y-4"
+  // className="border text-card-foreground max-w-lg mx-auto mt-10 p-6 bg-white rounded-xl shadow-md space-y-4"
   data-v0-t="card"
 >
   <div className="flex flex-col space-y-1.5 p-6">
@@ -26,9 +82,11 @@ console.log(data)
       </label>
       <input
         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-        id="client-name"
+        id="fullname"
         placeholder="John Doe"
-        required=""
+        // required=""
+        value={clientData.name}
+        onChange={handleInputChange}
       />
     </div>
     <div className="space-y-2">
@@ -40,10 +98,12 @@ console.log(data)
       </label>
       <input
         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-        id="client-email"
-        placeholder="johndoe@example.com"
-        type="email"
-        required=""
+        id="email"
+        // placeholder="johndoe@example.com"
+        // type="email"
+        // required=""
+        value={clientData.email}
+        onChange={handleInputChange}
       />
     </div>
     <div className="space-y-2">
@@ -55,9 +115,11 @@ console.log(data)
       </label>
       <input
         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-        id="client-phone"
-        placeholder="+1 234 567 890"
-        required=""
+        id="phone"
+        // placeholder="+1 234 567 890"
+        // require§d=""
+        value={clientData.phone}
+        onChange={handleInputChange}
       />
     </div>
     <div className="space-y-2">
@@ -70,13 +132,18 @@ console.log(data)
      
       <select
            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-
+           value={clientData.apartment}
+           id="apartment"
+           onChange={handleInputChange}
         aria-hidden="true"
         >
         <option value="">  Apartment Number</option>
         {data &&
           data.apartments.map((apartment) => (
-            <option key={apartment.id} value={apartment.number}>
+            <option key={apartment.id} 
+            
+          value={apartment._id}
+            >
               {apartment.name}
             </option>
           ))}
@@ -91,9 +158,11 @@ console.log(data)
       </label>
       <input
         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-        id="lease-start"
-        required=""
+        id="startDate"
+        // required=""
         type="date"
+        value={clientData.startDate}
+        onChange={handleInputChange}
       />
     </div>
     <div className="space-y-2">
@@ -105,14 +174,18 @@ console.log(data)
       </label>
       <input
         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-        id="lease-end"
-        required=""
+        id="endDate"
+        // required=""
         type="date"
+        value={clientData.endDate}
+        onChange={handleInputChange}
       />
     </div>
   </div>
-  <div className="flex items-center p-6">
-    <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full">
+  <div className="flex items-center ">
+    <button  
+    onClick={handleAddClient}
+    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full">
       Add Client
     </button>
   </div>

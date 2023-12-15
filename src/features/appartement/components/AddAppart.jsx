@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useCreateApartmentMutation } from "../redux/apartmentApiSlice";
 import Swal from 'sweetalert2';
+import imageCompression from "browser-image-compression";
+
 
 export default function AddAppart(){
 
@@ -12,8 +14,44 @@ const [apartmentData, setApartmentData] = useState({
   location: '',
   price: '',
   description: '',
-  image:''
+  image:null
 });
+
+
+
+const handleFileChange = async (e) => {
+  const imageFile = e.target.files[0];
+
+  // Compress the image before setting it in the state
+  const compressedImage = await compressImage(imageFile);
+  
+  setApartmentData((prevData) => ({
+    ...prevData,
+    image: compressedImage,
+  }));
+};
+
+const compressImage = async (file) => {
+  const options = {
+    maxSizeMB: 1,
+    maxWidthOrHeight: 800,
+    useWebWorker: true,
+  };
+
+  try {
+    const compressedImage = await imageCompression(file, options);
+    return compressedImage;
+  } catch (error) {
+    console.error("Error compressing image:", error);
+    return file; // If compression fails, use the original file
+  }
+};
+
+
+
+
+
+
 
 const handleInputChange = (e) => {
   const { id, value } = e.target;
@@ -25,7 +63,17 @@ const handleInputChange = (e) => {
 
 const handleAddApartment = async () => {
   try {
-    await createApartment(apartmentData);
+
+
+    const formData = new FormData();
+    formData.append("name", apartmentData.name);
+    formData.append("location", apartmentData.location);
+    formData.append("price", apartmentData.price);
+    formData.append("description", apartmentData.description);
+    formData.append("image", apartmentData.image);
+
+
+    await createApartment(formData);
 
     console.log(apartmentData);
     Swal.fire({
@@ -126,7 +174,7 @@ const handleAddApartment = async () => {
         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         type="file"
         id="file-input"
-
+onClick={handleFileChange}
       />
     </div>
   </div>

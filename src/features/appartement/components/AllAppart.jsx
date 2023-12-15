@@ -41,7 +41,17 @@ export default function AllAppart(){
               data.apartments.map((apartment) => (
 
       <tr key={apartment.id}  className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">{apartment.name}</td>
+        {/* <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">{apartment.name}</td> */}
+
+        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 hidden md:table-cell">
+                              <img
+                          src={apartment.image}
+                          width="64"
+                          height="64"
+                          alt="Apartment image"
+                          className="aspect-square rounded-md object-cover"
+                        />
+                            </td>
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{apartment.location}</td>
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{apartment.price}</td>
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{apartment.room}</td>
