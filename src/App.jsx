@@ -15,6 +15,7 @@ import AllApartments from './features/appartement/pages/AllApartments';
 import AddApart from './features/appartement/pages/AddApart';
 import PaymentRoute from './features/payment/routes/PaymentRoute';
 import Side from './features/admin/components/Side';
+import EditApartmentPage from './features/appartement/pages/EditApartmentPage';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
 
 
           <Route path="/addAPart" element={<AddApart />} />
+          <Route path="/apartment/editapartment/:id" element={<EditApartmentPage />} />
+
           <Route path="/allAparts" element={<AllApartments />} />
 
           <Route path="/payment/*" element={<PaymentRoute />} />

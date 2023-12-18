@@ -97,7 +97,7 @@ export default function DetailPay() {
                         /> */}
                             </td>
                             <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">
-                              Skyline Towers
+                                {payment.apartment.name}
                             </td>
                             <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                               {payment.month}
