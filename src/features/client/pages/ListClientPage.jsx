@@ -1,6 +1,7 @@
 import SideBar from '../../admin/components/SideBar';
 import Header from '../../admin/layout/Header';
-import AllClient from '../components/AllClient';
+import ListClient from '../components/ListClient';
+// import AllClient from '../components/AllClient';
 
 
 export default function ListClientPage() {
@@ -14,7 +15,8 @@ export default function ListClientPage() {
             <div className="flex items-center gap-4">
               <h1 className="font-semibold text-lg md:text-xl">Dashboard</h1>
             </div>
-            <AllClient/>    
+            {/* <AllClient/>     */}
+            <ListClient/>
          
           </main>
         </div>

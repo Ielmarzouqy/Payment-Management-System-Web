@@ -46,12 +46,12 @@ export const clientApiSlice = apiSlice.injectEndpoints({
     //   }),
     // }),
 
-    // deletePayment: builder.mutation({
-    //   query: (paymentId) => ({
-    //     url: `/payment/${paymentId}`,
-    //     method: "DELETE",
-    //   }),
-    // }),
+    deleteClient: builder.mutation({
+      query: (clientId) => ({
+        url: `/client/deleteclt/${clientId}`,
+        method: "DELETE",
+      }),
+    }),
 
    
     getAllClients: builder.query({
@@ -64,7 +64,7 @@ export const {
   useCreateClientMutation,
   useGetClientByIdQuery,
   useGetClientReceiptQuery,
-  // useDeletePaymentMutation,
+  useDeleteClientMutation,
   useGetAllClientsQuery,
   useUploadPhotoMutation,
 } = clientApiSlice;

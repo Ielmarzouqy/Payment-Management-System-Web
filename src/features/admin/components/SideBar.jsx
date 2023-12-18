@@ -3,13 +3,13 @@ import { useState } from "react";
  
  export default function SideBar(){
 
-    const [currentPage, setCurrentPage] = useState(''); // You can initialize it with the current page name
-
-    // Function to handle page change
-    const handlePageChange = (page) => {
+    const [currentPage, setCurrentPage] = useState(''); 
+     const handlePageChange = (page) => {
           console.log('Changing page to:', page);
 
       setCurrentPage(page);
+
+      
     }
     return (
         <>
@@ -90,8 +90,7 @@ import { useState } from "react";
            className= {`${ currentPage === 'apartment' ? 'active' : '' } flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50`}
   
             onClick={() => handlePageChange('apartment')}
-            // className={ currentPage === 'payment' ? 'active' : ''}"  active flex items-center gap-3 rounded-lg px-3 py-2   transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50"
-            href="/addAPart"
+             href="/addAPart"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
