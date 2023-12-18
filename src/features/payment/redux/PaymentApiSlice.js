@@ -26,7 +26,7 @@ export const paymentApiSlice = apiSlice.injectEndpoints({
 
     deletePayment: builder.mutation({
       query: (paymentId) => ({
-        url: `/payment/${paymentId}`,
+        url: `/payment/deletepay/${paymentId}`,
         method: "DELETE",
       }),
     }),

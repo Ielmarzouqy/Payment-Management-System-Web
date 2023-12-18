@@ -1,6 +1,7 @@
 import SideBar from '../../admin/components/SideBar';
 import Header from '../../admin/layout/Header';
 import AllPayments from '../component/AllPayments';
+import ListPayments from '../component/ListPayments';
 
 
 const ListPaymentPage = () => {
@@ -14,7 +15,8 @@ const ListPaymentPage = () => {
             <div className="flex items-center gap-4">
               <h1 className="font-semibold text-lg md:text-xl">Dashboard</h1>
             </div>
-            <AllPayments/>
+            {/* <AllPayments/> */}
+            <ListPayments></ListPayments>
          
           </main>
         </div>

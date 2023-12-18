@@ -1,9 +1,6 @@
-// import { useGetAllApartmentsQuery } from "../redux/apartmentApiSlice";
-
 import { useDeleteClientMutation, useGetAllClientsQuery } from "../redux/ClientApiSlice";
 
 import { useState } from "react";
-// import { useDeleteApartmentMutation, useGetAllApartmentsQuery } from "../redux/apartmentApiSlice";
 import Swal from "sweetalert2";
 
 export default function ListClient(){
@@ -11,8 +8,6 @@ export default function ListClient(){
   console.log("data")
 
     const { data:clients } = useGetAllClientsQuery();
-    // const { data:apartments } = useGetAllApartmentsQuery();
-
 
     const [deleteClient] = useDeleteClientMutation()
     console.log(clients);
@@ -31,7 +26,6 @@ export default function ListClient(){
           icon: 'success',
         });
         
-        // Optional: Update component state if needed
       } catch (error) {
         console.error("Failed to delete apartment", error);
       }
