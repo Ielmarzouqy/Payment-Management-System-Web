@@ -18,7 +18,7 @@ export const paymentApiSlice = apiSlice.injectEndpoints({
 
     updatePayment: builder.mutation({
       query: ({ paymentId, paymentData }) => ({
-        url: `/payment/${paymentId}`,
+        url: `/payment/updatepay/${paymentId}`,
         method: "PUT",
         body: paymentData,
       }),

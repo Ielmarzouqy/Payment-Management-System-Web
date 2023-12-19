@@ -38,13 +38,13 @@ export const clientApiSlice = apiSlice.injectEndpoints({
       query: (clientId, month) => `/client/client/${clientId}/${month}`,
     }),
 
-    // updatePayment: builder.mutation({
-    //   query: ({ paymentId, paymentData }) => ({
-    //     url: `/payment/${paymentId}`,
-    //     method: "PUT",
-    //     body: paymentData,
-    //   }),
-    // }),
+    updateClient: builder.mutation({
+      query: ({ clientId, clientData }) => ({
+        url: `/client/updateclt/${clientId}`,
+        method: "PUT",
+        body: clientData,
+      }),
+    }),
 
     deleteClient: builder.mutation({
       query: (clientId) => ({
@@ -66,6 +66,7 @@ export const {
   useGetClientReceiptQuery,
   useDeleteClientMutation,
   useGetAllClientsQuery,
+  useUpdateClientMutation,
   useUploadPhotoMutation,
 } = clientApiSlice;
 

@@ -16,6 +16,7 @@ import AddApart from './features/appartement/pages/AddApart';
 import PaymentRoute from './features/payment/routes/PaymentRoute';
 import Side from './features/admin/components/Side';
 import EditApartmentPage from './features/appartement/pages/EditApartmentPage';
+import EditClientPage from './features/client/pages/EditClientPage';
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
           {/* <Route path="/receipt" element={<ReceiptPage />} /> */}
 
           <Route path="/addClient" element={<AddClientPage />} />
+          <Route path="/client/editClient/:id" element={<EditClientPage />} />
+
           <Route path="/allClients" element={<ListClientPage />} />
         </Routes>
       </Router>

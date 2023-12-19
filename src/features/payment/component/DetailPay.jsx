@@ -153,7 +153,7 @@ export default function DetailPay() {
                                     </svg>
                               </button>
 
-                              <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 mr-2">
+                              {/* <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 mr-2">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   width="24"
@@ -170,7 +170,10 @@ export default function DetailPay() {
                                   <polyline points="14 2 14 8 20 8"></polyline>
                                   <path d="M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z"></path>
                                 </svg>
-                              </button>
+                              </button> */}
+
+                              <Link to={`/payment/edit/${payment._id}`}>edit</Link>
+
                             </td>
                           </tr>
 
