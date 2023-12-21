@@ -1,5 +1,56 @@
+import { useState } from "react";
+import { useLoginMutation } from "../../auth/redux/UserApiSlice"
+import Swal from "sweetalert2";
+
 export default function LoginForm() {
 
+    const [login] = useLoginMutation()
+
+    const [loginData, setLoginData] = useState({
+        email: '',
+        password: '',
+       
+      });
+
+const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setLoginData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  
+  const handleLogin = async () => {
+    try {
+  
+  
+    //   const formData = new FormData();
+    //   formData.append("name", apartmentData.name);
+    //   formData.append("location", apartmentData.location);
+    //   formData.append("price", apartmentData.price);
+    //   formData.append("description", apartmentData.description);
+    //   formData.append("image", apartmentData.image);
+  
+  
+      await login(loginData);
+  
+      console.log(loginData);
+      Swal.fire({
+        title: 'Logged in success!',
+        text: 'The Admin logged in.',
+        icon: 'success',
+      });
+    } catch (error) {
+      console.error('Failed to create aprt', error);
+  
+      Swal.fire({
+        title: 'Error',
+        text: 'Failed to create apartment.',
+        icon: 'error',
+      });
+    }
+  };
     return (
 
         <>
@@ -17,8 +68,10 @@ export default function LoginForm() {
             </label>
             <input
               className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-              id="login-email"
+              id="email"
               type="email"
+              value={loginData.email}
+              onChange={handleInputChange}
             />
           </div>
           <div className="space-y-1">
@@ -30,13 +83,17 @@ export default function LoginForm() {
             </label>
             <input
               className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-              id="login-password"
+              id="password"
               type="password"
+              value={loginData.password}
+              onChange={handleInputChange}
             />
           </div>
         </div>
         <div className="flex items-center p-6">
-          <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-red-500 text-white">
+          <button 
+          onClick={handleLogin}
+          className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-red-500 text-white">
             Login
           </button>
         </div>
