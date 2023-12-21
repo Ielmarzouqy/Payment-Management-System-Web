@@ -42,7 +42,8 @@ id="receipt-container"
     <div className="flex items-center justify-between">
       <h3 className="text-2xl font-semibold leading-none tracking-tight">Payment Receipt</h3>
       <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 text-sm bg-green-500 text-white">
-        Paid
+        {/* Paid */}
+        <img src="logo.png" className="w-40 h-500" alt="" />
       </div>
     </div>
     <p className="text-sm text-gray-600">Thank you for your payment</p>

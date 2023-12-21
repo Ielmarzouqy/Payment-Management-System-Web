@@ -1,21 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-// const initialState = {
-//   allPayments: [],
-// };
-
-// const paymentSlice = createSlice({
-//   name: "payment",
-//   initialState,
-//   reducers: {
-//     setAllPaments: (state, action) => {
-//       state.allPayments = action.payload;
-//     },
-//   },
-// });
-
-// export const { setAllPaments } = paymentSlice.actions;
-
-// export default paymentSlice.reducer;
 
 import { createSlice } from "@reduxjs/toolkit";
 

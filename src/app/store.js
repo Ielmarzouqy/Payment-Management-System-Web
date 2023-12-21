@@ -41,6 +41,9 @@ import  { clientApiSlice } from '../features/client/redux/ClientApiSlice';
 import clientReducer from '../features/client/redux/ClientSlice';
 import { apartmentApiSlice } from "../features/appartement/redux/apartmentApiSlice";
 import apartmentReducer from "../features/appartement/redux/apartmentSlice";
+import { userApiSlice } from "../features/auth/redux/UserApiSlice";
+import userReducer from "../features/auth/redux/UserSlice";
+
 
 
 
@@ -53,7 +56,10 @@ const store = configureStore({
     [paymentApiSlice.reducerPath]: paymentApiSlice.reducer,
   
     apartment:apartmentReducer,
-    [apartmentApiSlice.reducerPath]: apartmentApiSlice.reducer
+    [apartmentApiSlice.reducerPath]: apartmentApiSlice.reducer,
+
+    user:userReducer,
+    [userApiSlice.reducerPath]: userApiSlice.reducer
 
 
   },
@@ -62,7 +68,9 @@ const store = configureStore({
       .concat(apiSlice.middleware)
       .concat(paymentApiSlice.middleware)
       .concat(clientApiSlice.middleware)
-      .concat(apartmentApiSlice.middleware),
+      .concat(apartmentApiSlice.middleware)
+      .concat(userApiSlice.middleware),
+
 
   devTools: true,
 });

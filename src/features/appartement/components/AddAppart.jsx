@@ -48,11 +48,6 @@ const compressImage = async (file) => {
 };
 
 
-
-
-
-
-
 const handleInputChange = (e) => {
   const { id, value } = e.target;
   setApartmentData((prevData) => ({

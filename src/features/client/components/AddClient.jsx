@@ -1,13 +1,13 @@
 // import { useGetAllApartmentsQuery } from "../../appartement/redux/apartmentApiSlice"
 
 import Swal from "sweetalert2";
-import { useGetAllApartmentsQuery } from "../../appartement/redux/apartmentApiSlice"
+import { useGetAllApartmentsQuery, useGetAvailableAllApartmentsQuery } from "../../appartement/redux/apartmentApiSlice"
 import { useCreateClientMutation } from "../redux/ClientApiSlice";
 import { useState } from "react";
 
 export default function AddClient(){
-  const {data} = useGetAllApartmentsQuery()
-
+  // const {data} = useGetAllApartmentsQuery()
+const {data} = useGetAvailableAllApartmentsQuery()
   const [createClient] = useCreateClientMutation()
 
 const [clientData, setClientData] = useState({
@@ -46,7 +46,7 @@ const handleAddClient = async () => {
 
     console.log(clientData);
     Swal.fire({
-      title: 'create client sucess!',
+      title: `Apartment reserved by ${clientData.fullname}`,
       text: 'The client created.',
       icon: 'success',
     });
@@ -137,9 +137,9 @@ console.log(data)
            onChange={handleInputChange}
         aria-hidden="true"
         >
-        <option value="">  Apartment Number</option>
+        <option value=""> select  Apartment </option>
         {data &&
-          data.apartments.map((apartment) => (
+          data.apartment.map((apartment) => (
             <option key={apartment.id} 
             
           value={apartment._id}

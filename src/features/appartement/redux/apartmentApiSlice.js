@@ -58,12 +58,16 @@ export const apartmentApiSlice = apiSlice.injectEndpoints({
     getAllApartments: builder.query({
       query: () => "/apartment/allapartment",
     }),
+    getAvailableAllApartments: builder.query({
+      query: () => "/apartment/available",
+    }),
   }),
 });
 
 export const {
  useCreateApartmentMutation,
  useGetAllApartmentsQuery,
+ useGetAvailableAllApartmentsQuery,
  useDeleteApartmentMutation,
  useUpdateApartmentMutation,
  useGetApartmentByIdQuery

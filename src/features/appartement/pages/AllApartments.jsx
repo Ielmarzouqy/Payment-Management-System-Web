@@ -1,7 +1,5 @@
 import SideBar from "../../admin/components/SideBar";
 import Header from "../../admin/layout/Header";
-// import React from 'react';
-// import Header from "../../admin/layout/Header";
 import AllAppart from "../components/AllAppart";
 
  export default function AllApartments(){
@@ -21,6 +19,7 @@ import AllAppart from "../components/AllAppart";
                     </div> */}
             {/* <AddAppart/> */}
             <AllAppart/>
+            {/* <AllApartmentsC/> */}
 
             {/* </main>*/}
             </div>

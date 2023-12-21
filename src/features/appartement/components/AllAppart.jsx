@@ -55,7 +55,7 @@ export default function AllAppart(){
           Bedrooms
         </th>
         <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 w-[200px]">
-          Bathrooms
+          Availability
         </th>
         <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 w-[200px]">
           Actions
@@ -70,18 +70,25 @@ export default function AllAppart(){
         {/* <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">{apartment.name}</td> */}
 
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 hidden md:table-cell">
-                              <img
-                          src={apartment.image}
-                          width="64"
-                          height="64"
-                          alt="Apartment image"
-                          className="aspect-square rounded-md object-cover"
-                        />
-                            </td>
+              <img
+                src={apartment.image}
+                width="64"
+                height="64"
+                alt="Apartment image"
+                className="aspect-square rounded-md object-cover"
+              />
+        </td>
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{apartment.location}</td>
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{apartment.price}</td>
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{apartment.room}</td>
-        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">2</td>
+
+        <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+        <span style={{ color: apartment.isAvailable ? "green" : "red" }}>
+
+          {apartment.isAvailable ? "Available" : "Not Available"}
+          </span>
+          </td>
+
         <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
           <button 
           // onClick={updateApart(apartment._id)}
